@@ -54,6 +54,7 @@ prebuilt_etc {
 prebuilt_etc {
     name: "task_profiles.json",
     src: "task_profiles.json",
+    recovery_available: true,
     required: [
         "task_profiles_28.json",
         "task_profiles_29.json",
