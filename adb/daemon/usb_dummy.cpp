@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,26 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#pragma once
-
-#include <memory>
 
 #include <adbd/usb.h>
 
-#include "transport.h"
+#include <android-base/logging.h>
 
-class ClientUsbTransport : public Transport {
-  public:
-    ClientUsbTransport();
-    ~ClientUsbTransport() override = default;
+int usb_write(usb_handle*, const void*, int) {
+    LOG(FATAL) << "unimplemented";
+    return -1;
+}
 
-    ssize_t Read(void* data, size_t len) override;
-    ssize_t Write(const void* data, size_t len) override;
-    int Close() override;
-    int Reset() override;
+int usb_read(usb_handle*, void*, int) {
+    LOG(FATAL) << "unimplemented";
+    return -1;
+}
 
-  private:
-    std::unique_ptr<usb_handle> handle_;
+int usb_close(usb_handle*) {
+    LOG(FATAL) << "unimplemented";
+    return -1;
+}
 
-    DISALLOW_COPY_AND_ASSIGN(ClientUsbTransport);
-};
+void usb_reset(usb_handle*) {
+    LOG(FATAL) << "unimplemented";
+}
+
+void usb_kick(usb_handle*) {
+    LOG(FATAL) << "unimplemented";
+}
